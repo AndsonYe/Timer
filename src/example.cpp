@@ -28,5 +28,6 @@ int main()
     //sleep for one second
     SLEEP(1);
     my_timer.lap("sleep");
+    my_timer.print();
     return 0;
 }

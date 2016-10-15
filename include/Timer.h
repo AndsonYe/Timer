@@ -11,6 +11,7 @@ typedef LARGE_INTEGER TIME_UNIT;
 #define get_frequency(frequency) QueryPerformanceFrequency(frequency)
 #define clock_now(time_stamp) QueryPerformanceCounter(time_stamp)
 #define millisec_gap(begin, end, frequency) ((end.QuadPart - begin.QuadPart) * 1000.0 / frequency.QuadPart)
+
 #elif defined (linux) || defined(__unix__) || defined(__linux__)
 #include <time.h>
 typedef timespec TIME_UNIT;
@@ -30,7 +31,6 @@ public:
     void stop();
     void lap(string name);
     void reset();
-    //void resume();
     void print();
 private:
     TIME_UNIT           start_time_;
