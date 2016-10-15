@@ -25,14 +25,26 @@ using std::string;
 class Timer
 {
 public:
-    //Timer();
     Timer(string name="default");
+
     void start();
+
     void stop();
+
     void reset();
+
+    /**
+    * @brief Computes milliseconds elapsed since start or last lap
+    */
     float get_lap();
+
+    /**
+    * @brief Computes milliseconds elapsed since start
+    */
     float get_total();
+
     void lap(string name);
+
     void print();
 private:
     TIME_UNIT           start_time_;
