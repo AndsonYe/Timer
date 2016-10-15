@@ -5,9 +5,9 @@ A simple cross-platform tool for calculating elapsed time in C++ program.
 You may also find that using `clock()` to calculate the time elapsed is not accurate, like the code bellow
 
 ```cpp
-time_t start = clock();
+clock_t start = clock();
 //do something here
-time_t end = clock();
+clock_t end = clock();
 float millisecs_elapsed = (end - start) / (float) CLOCKS_PER_SEC;
 ```
 That's because `clock()` only return the approximate processor time used by the process and the `millisecs_elapsed` may not be equal to the amount of wall-clock time between `end` and `start`
