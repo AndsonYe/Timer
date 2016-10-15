@@ -35,4 +35,4 @@ For Linux:
     cmake ..
     make
 
-For Windows, you can also use `cmake` to generate a Visual Studio project or just create a VS project and add every file then run build.
+For Windows, you can use `cmake` to generate a Visual Studio project or just create a VS project and add every file then run build.
