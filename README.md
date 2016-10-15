@@ -2,7 +2,7 @@
 A simple cross-platform tool for calculating elapsed time in C++ program.
 
 ## Why this?
-You may also find that using clock() to calculate the time elapsed is not accurate, like the code bellow
+You may also find that using `clock()` to calculate the time elapsed is not accurate, like the code bellow
 
 ```cpp
 time_t start = clock();
@@ -10,7 +10,7 @@ time_t start = clock();
 time_t end = clock();
 float millisecs_elapsed = (end - start) / (float) CLOCKS_PER_SEC;
 ```
-Thats because clock() only return the approximate processor time used by the process and the `millisecs_elapsed` may not be equal to the amount of wall-clock time between `end` and `start`
+That's because `clock()` only return the approximate processor time used by the process and the `millisecs_elapsed` may not be equal to the amount of wall-clock time between `end` and `start`
 
 To get the accurate time duration, we need to access the system API. So here comes a Timer for both Linux and Windows.
 
