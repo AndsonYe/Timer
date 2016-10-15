@@ -22,16 +22,6 @@ void Timer::stop()
     running_ = false;
 }
 
-void Timer::lap(string name)
-{
-    assert(running_ == true);
-    TIME_UNIT lap_time;
-    clock_now(&lap_time);
-    printf("%s timer %s lap takes time: %.4fms\n", name_.c_str(), name.c_str(),
-        millisec_gap(last_lap_time_, lap_time, frequency_));
-    last_lap_time_ = lap_time;
-}
-
 void Timer::reset()
 {
     assert(running_ == true);
@@ -39,11 +29,32 @@ void Timer::reset()
     last_lap_time_ = start_time_;
 }
 
-void Timer::print()
+float Timer::get_lap()
+{
+    float ret;
+    assert(running_ == true);
+    TIME_UNIT lap_time;
+    clock_now(&lap_time);
+    ret = millisec_gap(last_lap_time_, lap_time, frequency_);
+    last_lap_time_ = lap_time;
+    return ret;
+}
+
+void Timer::lap(string name)
+{
+    printf("%s timer %s lap takes: %.4fms\n", name_.c_str(), name.c_str(), get_lap());
+}
+
+float Timer::get_total()
 {
     if (running_)
         stop();
-    printf("%s timer totally elpased time: %.4fms\n", name_.c_str(),
-            millisec_gap(start_time_, end_time_, frequency_));
+    return millisec_gap(start_time_, end_time_, frequency_);
+}
+
+void Timer::print()
+{
+    printf("%s timer totally elpased: %.4fms\n", name_.c_str(),
+            get_total());
 }
 

@@ -29,8 +29,10 @@ public:
     Timer(string name="default");
     void start();
     void stop();
-    void lap(string name);
     void reset();
+    float get_lap();
+    float get_total();
+    void lap(string name);
     void print();
 private:
     TIME_UNIT           start_time_;

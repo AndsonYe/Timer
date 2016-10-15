@@ -24,9 +24,11 @@ int main()
     //need to start the timer before measuring the function
     my_timer.start();
     foo();
-    my_timer.lap("foo");
+    float foo_elapse = my_timer.get_lap();
+    printf("the time takes for running foo is %.4f milliseconds\n", foo_elapse);
     //sleep for one second
     SLEEP(1);
+    //if you only need to print the duration, use lap() and print() instead of get_lap() and get_total()
     my_timer.lap("sleep");
     my_timer.print();
     return 0;
