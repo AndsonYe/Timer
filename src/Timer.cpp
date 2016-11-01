@@ -58,3 +58,14 @@ void Timer::print()
             get_total());
 }
 
+TIME_UNIT Timer::get_current_timestamp()
+{
+    TIME_UNIT current_time;
+    clock_now(&current_time);
+    return current_time;
+}
+
+float Timer::get_time_gap(const TIME_UNIT &begin, const TIME_UNIT &end, time_unit_type unit_type)
+{
+    return millisec_gap(begin, end, frequency_) / (int)unit_type;
+}

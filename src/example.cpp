@@ -31,5 +31,10 @@ int main()
     //if you only need to print the duration, use lap() and print() instead of get_lap() and get_total()
     my_timer.lap("sleep");
     my_timer.print();
+
+    TIME_UNIT begin_time = my_timer.get_current_timestamp();
+    SLEEP(4);
+    TIME_UNIT end_time = my_timer.get_current_timestamp();
+    printf("time elapsed: %f seconds", my_timer.get_time_gap(begin_time, end_time, time_unit_type::second));
     return 0;
 }

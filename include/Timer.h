@@ -22,6 +22,15 @@ typedef timespec TIME_UNIT;
 
 using std::string;
 
+enum time_unit_type
+{
+    millisecond = 1,
+    second = 1000,
+    minute = 60000,
+    hour = 3600000,
+    day = 86400000
+};
+
 class Timer
 {
 public:
@@ -46,6 +55,10 @@ public:
     void lap(string name);
 
     void print();
+
+    TIME_UNIT get_current_timestamp();
+
+    float get_time_gap(const TIME_UNIT &begin, const TIME_UNIT &end, time_unit_type unit_type = time_unit_type::millisecond);
 private:
     TIME_UNIT           start_time_;
     TIME_UNIT           end_time_;
