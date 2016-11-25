@@ -45,7 +45,7 @@ public:
     /**
     * @brief Computes milliseconds elapsed since start or last lap
     */
-    float get_lap();
+    float get_lap(time_unit_type unit_type = time_unit_type::millisecond);
 
     /**
     * @brief Computes milliseconds elapsed since start

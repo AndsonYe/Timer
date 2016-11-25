@@ -29,7 +29,7 @@ void Timer::reset()
     last_lap_time_ = start_time_;
 }
 
-float Timer::get_lap()
+float Timer::get_lap(time_unit_type unit_type)
 {
     float ret;
     assert(running_ == true);
@@ -37,7 +37,7 @@ float Timer::get_lap()
     clock_now(&lap_time);
     ret = millisec_gap(last_lap_time_, lap_time, frequency_);
     last_lap_time_ = lap_time;
-    return ret;
+    return ret / unit_type;
 }
 
 void Timer::lap(string name)
