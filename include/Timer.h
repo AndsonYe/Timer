@@ -45,12 +45,13 @@ public:
     /**
     * @brief Computes milliseconds elapsed since start or last lap
     */
-    float get_lap(time_unit_type unit_type = time_unit_type::millisecond);
+    double get_lap(time_unit_type unit_type = millisecond);
 
     /**
     * @brief Computes milliseconds elapsed since start
     */
-    float get_total(time_unit_type unit_type = time_unit_type::millisecond);
+
+    double get_total(time_unit_type unit_type = millisecond);
 
     void lap(string name);
 
@@ -58,7 +59,7 @@ public:
 
     TIME_UNIT get_current_timestamp();
 
-    float get_time_gap(const TIME_UNIT &begin, const TIME_UNIT &end, time_unit_type unit_type = time_unit_type::millisecond);
+    double get_time_gap(const TIME_UNIT &begin, const TIME_UNIT &end, time_unit_type unit_type = millisecond);
 private:
     TIME_UNIT           start_time_;
     TIME_UNIT           end_time_;

@@ -24,7 +24,7 @@ int main()
     //need to start the timer before measuring the function
     my_timer.start();
     foo();
-    float foo_elapse = my_timer.get_lap();
+    double foo_elapse = my_timer.get_lap();
     printf("the time takes for running foo is %.4f milliseconds\n", foo_elapse);
     //sleep for one second
     SLEEP(1);
@@ -35,6 +35,6 @@ int main()
     TIME_UNIT begin_time = my_timer.get_current_timestamp();
     SLEEP(4);
     TIME_UNIT end_time = my_timer.get_current_timestamp();
-    printf("time elapsed: %f seconds", my_timer.get_time_gap(begin_time, end_time, time_unit_type::second));
+    printf("time elapsed: %f seconds\n", my_timer.get_time_gap(begin_time, end_time, second));
     return 0;
 }

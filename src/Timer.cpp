@@ -29,9 +29,9 @@ void Timer::reset()
     last_lap_time_ = start_time_;
 }
 
-float Timer::get_lap(time_unit_type unit_type)
+double Timer::get_lap(time_unit_type unit_type)
 {
-    float ret;
+    double ret;
     assert(running_ == true);
     TIME_UNIT lap_time;
     clock_now(&lap_time);
@@ -45,9 +45,10 @@ void Timer::lap(string name)
     printf("%s timer %s lap takes: %.4fms\n", name_.c_str(), name.c_str(), get_lap());
 }
 
-float Timer::get_total(time_unit_type unit_type)
+
+double Timer::get_total(time_unit_type unit_type)
 {
-    float ret;
+    double ret;
     if (running_)
     {
         TIME_UNIT now;
@@ -74,7 +75,7 @@ TIME_UNIT Timer::get_current_timestamp()
     return current_time;
 }
 
-float Timer::get_time_gap(const TIME_UNIT &begin, const TIME_UNIT &end, time_unit_type unit_type)
+double Timer::get_time_gap(const TIME_UNIT &begin, const TIME_UNIT &end, time_unit_type unit_type)
 {
     return millisec_gap(begin, end, frequency_) / (int)unit_type;
 }
