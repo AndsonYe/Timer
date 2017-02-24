@@ -45,11 +45,20 @@ void Timer::lap(string name)
     printf("%s timer %s lap takes: %.4fms\n", name_.c_str(), name.c_str(), get_lap());
 }
 
-float Timer::get_total()
+float Timer::get_total(time_unit_type unit_type)
 {
+    float ret;
     if (running_)
-        stop();
-    return millisec_gap(start_time_, end_time_, frequency_);
+    {
+        TIME_UNIT now;
+        clock_now(&now);
+        ret = millisec_gap(start_time_, now, frequency_);
+    }
+    else
+    {
+        ret = millisec_gap(start_time_, end_time_, frequency_);
+    }
+    return ret / unit_type;
 }
 
 void Timer::print()

@@ -50,7 +50,7 @@ public:
     /**
     * @brief Computes milliseconds elapsed since start
     */
-    float get_total();
+    float get_total(time_unit_type unit_type = time_unit_type::millisecond);
 
     void lap(string name);
 
