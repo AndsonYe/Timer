@@ -1,10 +1,10 @@
 #include <stdio.h>
-#if defined (linux) || defined(__unix__) || defined(__linux__)
-#include <unistd.h>
-#define SLEEP(x) sleep(x)
-#elif defined (_WIN32)
+#if defined (_WIN32)
 #include <Windows.h>
 #define SLEEP(x) Sleep(x * 1000)
+#else
+#include <unistd.h>
+#define SLEEP(x) sleep(x)
 #endif
 #include "Timer.h"
 

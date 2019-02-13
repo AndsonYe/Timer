@@ -12,12 +12,18 @@ typedef LARGE_INTEGER TIME_UNIT;
 #define clock_now(time_stamp) QueryPerformanceCounter(time_stamp)
 #define millisec_gap(begin, end, frequency) ((end.QuadPart - begin.QuadPart) * 1000.0 / frequency.QuadPart)
 
-#elif defined (linux) || defined(__unix__) || defined(__linux__)
-#include <time.h>
-typedef timespec TIME_UNIT;
+#else
+#include <chrono>
+#include <ratio>
+typedef std::chrono::high_resolution_clock::time_point TIME_UNIT;
 #define get_frequency(frequency)
-#define clock_now(time_stamp) clock_gettime(CLOCK_MONOTONIC, time_stamp)
-#define millisec_gap(begin, end, frequency) ((end.tv_sec - begin.tv_sec) * 1000 + (end.tv_nsec - begin.tv_nsec) / 1000000.0 )
+#define clock_now(time_stamp) {                                 \
+    *time_stamp = std::chrono::high_resolution_clock::now();    \
+}
+inline double millisec_gap(const TIME_UNIT &begin, const TIME_UNIT &end, const TIME_UNIT &frequency) {
+    std::chrono::duration<double, std::ratio<1, 1000> > duration(end - begin);
+    return duration.count();
+}
 #endif
 
 using std::string;

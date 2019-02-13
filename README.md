@@ -18,6 +18,7 @@ To get the accurate time duration, we need to access the system API. So here com
 * Windows 7
 * Windows 10
 * Ubuntu 14.04 LTS / Trusty
+* MacOS High Sierra
 
 
 ## Use Timer
